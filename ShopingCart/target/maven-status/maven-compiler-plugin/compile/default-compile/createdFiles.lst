@@ -1,0 +1,12 @@
+com\virus\shopingcart\categories\resource\CategoryResourceMapper.class
+com\virus\shopingcart\categories\service\ITypeCategoryService.class
+com\virus\shopingcart\categories\resource\CategoryResource.class
+com\virus\shopingcart\categories\controller\TypeCategoryController.class
+com\virus\shopingcart\categories\repository\ITypeCategoryRepository.class
+com\virus\shopingcart\categories\model\Categories.class
+com\virus\shopingcart\categories\repository\ICategoryRepository.class
+com\virus\shopingcart\categories\resource\TypeResourceMapper.class
+com\virus\shopingcart\categories\model\TypeCategory.class
+com\virus\shopingcart\config\ShopingBoot.class
+com\virus\shopingcart\categories\resource\TypeResource.class
+com\virus\shopingcart\categories\service\TypeCategoryServiceImpl.class
