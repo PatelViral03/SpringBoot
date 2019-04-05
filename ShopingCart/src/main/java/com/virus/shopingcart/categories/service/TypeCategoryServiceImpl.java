@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.virus.shopingcart.categories.model.TypeCategory;
-import com.virus.shopingcart.categories.repository.ITypeCategoryRepository;
+import com.virus.shopingcart.categories.repository.TypeCategoryRepository;
 import com.virus.shopingcart.categories.resource.TypeResource;
 import com.virus.shopingcart.categories.resource.TypeResourceMapper;
 
@@ -16,15 +16,12 @@ import com.virus.shopingcart.categories.resource.TypeResourceMapper;
 @Transactional
 public class TypeCategoryServiceImpl implements ITypeCategoryService {
 
+	TypeCategoryRepository typeCategoryRepository;
 
-	ITypeCategoryRepository typeCategoryRepository;
-	
 	TypeResourceMapper typeResourceMapper;
 
-
-	
-@Autowired
-	public TypeCategoryServiceImpl(ITypeCategoryRepository typeCategoryRepository,
+	@Autowired
+	public TypeCategoryServiceImpl(TypeCategoryRepository typeCategoryRepository,
 			TypeResourceMapper typeResourceMapper) {
 		this.typeCategoryRepository = typeCategoryRepository;
 		this.typeResourceMapper = typeResourceMapper;
@@ -42,22 +39,21 @@ public class TypeCategoryServiceImpl implements ITypeCategoryService {
 	}
 
 	@Override
-	public TypeResource getType(Integer id) {
-		return typeResourceMapper.fromEntity(typeCategoryRepository.getOne(id));
+	public TypeResource getType(Integer typeId) {
+		return typeResourceMapper.fromEntity(typeCategoryRepository.getOne(typeId));
 	}
 
 	@Override
-	public TypeResource removeType(Integer id) {
+	public TypeResource removeType(Integer typeId) {
 
-		TypeCategory type= typeCategoryRepository.getOne(id);
-		if(type!=null)
+		TypeCategory type = typeCategoryRepository.getOne(typeId);
+		if (type != null)
 			typeCategoryRepository.delete(type);
 		return null;
 	}
 
 	@Override
 	public List<TypeResource> getTypes() {
-		// TODO Auto-generated method stub
 		return typeResourceMapper.fromCollectionEntiry(typeCategoryRepository.findAll());
 	}
 
