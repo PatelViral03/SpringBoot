@@ -1,4 +1,4 @@
-package com.virus.shopingcart.config;
+package com.virus.shopingcart.init;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EnableAutoConfiguration
-@SpringBootApplication(scanBasePackages={"com.virus.shopingcart.*"})
+@SpringBootApplication(scanBasePackages = { "com.virus.shopingcart.*" })
 @EnableJpaRepositories("com.virus.shopingcart.*")
 @EntityScan("com.virus.shopingcart.*")
 @ComponentScan("com.virus.shopingcart.*")
@@ -18,8 +18,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class ShopingBoot extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
-		
-			SpringApplication.run(ShopingBoot.class, args);
+
+		SpringApplication.run(ShopingBoot.class, args);
 	}
-	
+
 }

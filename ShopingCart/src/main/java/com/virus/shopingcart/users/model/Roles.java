@@ -1,11 +1,14 @@
 package com.virus.shopingcart.users.model;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-
+@Entity
+@Table(name="role")
 public class Roles {
 
 	@Id
@@ -29,7 +32,7 @@ public class Roles {
 	}
 
 	public void setRoleName(String roleName) {
-		this.roleName = roleName;
+		this.roleName = roleName.toUpperCase();
 	}
 
 	

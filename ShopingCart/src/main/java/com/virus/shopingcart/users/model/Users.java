@@ -1,11 +1,22 @@
 package com.virus.shopingcart.users.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
+
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "user_details")
@@ -27,6 +38,12 @@ public class Users {
 	private String password;
 	@Column(name = "user_status")
 	private boolean status;
+	
+	@JsonManagedReference
+	@ManyToMany(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
+	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = { @JoinColumn(name = "role_id") })
+    private Set<Roles> role=new HashSet<Roles>();	
+
 
 	public Integer getId() {
 		return id;
@@ -73,7 +90,7 @@ public class Users {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password =password;
 	}
 
 	public boolean isStatus() {
@@ -82,6 +99,14 @@ public class Users {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	public Set<Roles> getRole() {
+		return role;
+	}
+
+	public void setRole(Set<Roles> role) {
+		this.role = role;
 	}
 
 }
